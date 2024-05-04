@@ -60,6 +60,8 @@ export async function qrCodeLogin(e, { render }) {
 	if (!res?.data) return false;
 	e._reply = e.reply
 	let sendMsg = [segment.at(e.user_id), '\n请扫码以完成绑定\n']
+	if (e.isPrivate)
+		{sendMsg = ['请扫码以完成绑定\n']}
 	e.reply = (msg) => {
 		sendMsg.push(msg)
 	}
